@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.128
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "juiceshop-blaster", "juiceshop-blaster.csproj", "{ADB36D6D-004E-443A-8683-EB03F3DC88C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADB36D6D-004E-443A-8683-EB03F3DC88C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB36D6D-004E-443A-8683-EB03F3DC88C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB36D6D-004E-443A-8683-EB03F3DC88C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB36D6D-004E-443A-8683-EB03F3DC88C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7B133F2-BC1A-4A7E-880F-0186AA459162}
+	EndGlobalSection
+EndGlobal

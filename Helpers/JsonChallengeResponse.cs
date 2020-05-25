@@ -1,8 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Tests
 {
+    /// <summary>
+    /// Model for response from Juice Shop API
+    /// /api/Challenges
+    /// </summary>
+    public class JsonChallengeResponse
+    {
+        [JsonPropertyName("data")]
+        public List<JsonChallenge> Data { get; set; }
+
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
+    }
+
     public class JsonChallenge
     {
         [JsonPropertyName("id")]
@@ -30,7 +44,7 @@ namespace Tests
         public string HintUrl { get; set; }
 
         [JsonPropertyName("solved")]
-        public bool solved { get; set; }
+        public bool Solved { get; set; }
 
         [JsonPropertyName("disabledEnv")]
         public string DisabledEnv { get; set; }

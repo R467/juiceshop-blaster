@@ -37,6 +37,7 @@ namespace Tests
             //Run chrome in headless mode
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("headless");
+            chromeOptions.AddArguments("window-size=1920,1080");
 
             Driver = new ChromeDriver(Config["chromeDriverPath"], chromeOptions);
         }
@@ -58,10 +59,10 @@ namespace Tests
             //Get base url from config
             string juiceShopUrl = config["juiceShopUrl"];
 
-            //Try up to 5 times to get the updated status of the challenge
+            //Try up to 10 times to get the updated status of the challenge
             //If it hasn't returned by then assume it failed
             int attempts = 0;
-            while (attempts < 5)
+            while (attempts < 10)
             {
                 //Look up challenge by id
                 var response = Client.GetStringAsync($"{juiceShopUrl}/api/Challenges/?id={(int)challenge}").Result;
@@ -79,6 +80,19 @@ namespace Tests
 
         }
 
+        /// <summary>
+        /// Dimiss the two modals on the screen
+        /// </summary>
+        public void ClearModals()
+        {
+            Driver.FindElement(By.ClassName("cc-dismiss")).Click();
+            Driver.FindElement(By.ClassName("close-dialog")).Click();
+        }
+
+        /// <summary>
+        /// Navigate to a page
+        /// </summary>
+        /// <param name="path">Relative path</param>
         public static void GoTo(string path)
         {
             //Prepend a slash if it's not already there

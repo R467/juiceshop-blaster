@@ -9,12 +9,17 @@ namespace Tests
     {           
         //Model for Juice Shop app
         public JuiceShop JuiceShop { get; private set; }
+        //Model for register page
+        public RegisterPage RegisterPage { get; private set; }
 
         [SetUp]
         public void Setup()
         {
-            //Instansiate a fresh model of the app
+            //Instantiate a fresh model of the app
             JuiceShop = new JuiceShop();
+
+            //Instantiate a fresh model of the register page
+            RegisterPage = new RegisterPage();
         }
 
         [TearDown]

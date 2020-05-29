@@ -49,9 +49,6 @@ namespace Tests
         [JsonPropertyName("disabledEnv")]
         public string DisabledEnv { get; set; }
 
-        [JsonPropertyName("tutorialOrder")]
-        public string TutorialOrder { get; set; }
-
         [JsonPropertyName("createdAt")]
         public DateTime CreatedAt { get; set; }
 

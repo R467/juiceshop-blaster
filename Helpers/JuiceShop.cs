@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 
@@ -39,6 +40,8 @@ namespace Tests
             chromeOptions.AddArguments("window-size=1920,1080");
 
             Driver = new ChromeDriver(Config["chromeDriverPath"], chromeOptions);
+
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);            
         }
 
         /// <summary>
@@ -62,10 +65,19 @@ namespace Tests
                 //Searching by id so assume the first result is the one we want
                 if (result.Data.First().Solved == true) return true;
 
-                Thread.Sleep(100);
+                Thread.Sleep(500);
+                attempts++;                
             }
 
             return false;
+        }
+
+        public void Search(string query)
+        {
+            ClearOverlay();
+            Driver.FindElement(By.ClassName("mat-search_icon-search")).Click();
+            Driver.FindElement(By.Id("mat-input-0")).SendKeys(query);
+            Driver.FindElement(By.Id("mat-input-0")).SendKeys(Keys.Enter);
         }
 
         /// <summary>
@@ -84,7 +96,7 @@ namespace Tests
         {
             try
             {
-                Driver.ExecuteJavaScript("return document.getElementsByClassName('cdk-overlay-transparent-backdrop')[0].remove();");
+                Driver.ExecuteJavaScript("return document.getElementsByClassName('cdk-overlay-backdrop')[0].remove();");
             }
             catch
             {

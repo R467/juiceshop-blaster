@@ -3,10 +3,12 @@ namespace Tests
     public enum Challenge 
     {
         DirectoryListingChallenge = 14,
+        LocalXssChallenge = 15,
         ErrorHandlingChallenge = 21,
         RedirectCryptoCurrencyChallenge = 54,
         PrivacyPolicyChallenge = 58,
         ScoreBoardChallenge = 70,
+        ZeroStarsChallenge = 88,
         MissingEncodingChallenge = 89,
         
 
@@ -16,8 +18,7 @@ namespace Tests
         tokenSaleChallenge = 7,
         captchaBypassChallenge = 9,
         changePasswordBenderChallenge = 10,
-        christmasSpecialChallenge = 11,        
-        localXssChallenge = 15,
+        christmasSpecialChallenge = 11,           
         dbSchemaChallenge = 16,
         deprecatedInterfaceChallenge = 17,
         easterEggLevelOneChallenge = 18,
@@ -75,8 +76,7 @@ namespace Tests
         basketAccessChallenge = 82,
         knownVulnerableComponentChallenge = 83,
         weirdCryptoChallenge = 84,
-        redirectChallenge = 85,
-        zeroStarsChallenge = 88,        
+        redirectChallenge = 85,                
         svgInjectionChallenge = 90,
         ExposedMetricsChallenge = 91,
         freeDeluxeChallenge = 92,

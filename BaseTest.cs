@@ -11,6 +11,8 @@ namespace Tests
         public JuiceShop JuiceShop { get; private set; }
         //Model for register page
         public RegisterPage RegisterPage { get; private set; }
+        //Model for feedback page
+        public ContactPage ContactPage { get; private set; }
 
         [SetUp]
         public void Setup()
@@ -20,6 +22,9 @@ namespace Tests
 
             //Instantiate a fresh model of the register page
             RegisterPage = new RegisterPage();
+
+            //Instantiate a fresh model of the feedback page
+            ContactPage = new ContactPage();
         }
 
         [TearDown]

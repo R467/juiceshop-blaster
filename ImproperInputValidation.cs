@@ -37,5 +37,19 @@ namespace Tests
 
             Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.PasswordRepeatChallenge));
         }
+
+        /// <summary>
+        /// Give a devastating zero-star feedback to the store
+        /// </summary>
+        [Test]
+        public void ZeroStars()
+        {
+            ContactPage.Load();
+            ContactPage.EnterComment("comment");
+            ContactPage.SolveCaptcha();
+            ContactPage.Submit();
+
+            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ZeroStarsChallenge));
+        }
     }
 }

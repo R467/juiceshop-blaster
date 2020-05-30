@@ -14,5 +14,16 @@ namespace Tests
 
             Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.PrivacyPolicyChallenge));
         }
+
+        /// <summary>
+        /// Find the carefully hidden 'Score Board' page
+        /// </summary>
+        [Test]
+        public void ScoreBoard()
+        {
+            JuiceShop.GoTo("#/score-board");
+
+            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ScoreBoardChallenge));
+        }
     }
 }

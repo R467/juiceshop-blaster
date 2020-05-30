@@ -21,6 +21,7 @@ namespace Tests
         [Test]
         public void RepetitiveRegistration()
         {
+            //Fill out the form
             RegisterPage.Load();
             RegisterPage.EnterUserName("test@test.com");
             RegisterPage.EnterPassword("12345");
@@ -28,6 +29,7 @@ namespace Tests
             RegisterPage.SelectASecurityQuestion();
             RegisterPage.EnterSecurityQuestionAnswer("answer");
 
+            //Clear the password field and change the value
             RegisterPage.ClearPassword();
             RegisterPage.EnterPassword("switcheroo");
 

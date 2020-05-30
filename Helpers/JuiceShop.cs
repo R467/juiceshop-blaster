@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Extensions;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -49,23 +48,13 @@ namespace Tests
         /// <returns>Whether the challenge has been successful</returns>
         public static bool IsChallengeSolved(Challenge challenge)
         {
-            //Load config file
-            IConfiguration config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .Build();
-
-            //Get base url from config
-            string juiceShopUrl = config["juiceShopUrl"];
-
             //Try up to 10 times to get the updated status of the challenge
             //If it hasn't returned by then assume it failed
             int attempts = 0;
             while (attempts < 10)
             {
                 //Look up challenge by id
-                var response = Client.GetStringAsync($"{juiceShopUrl}/api/Challenges/?id={(int)challenge}").Result;
+                var response = Client.GetStringAsync($"{JuiceShopUrl}/api/Challenges/?id={(int)challenge}").Result;
 
                 //Parse response from json to JsonChallengeResponse
                 JsonChallengeResponse result = JsonSerializer.Deserialize<JsonChallengeResponse>(response);
@@ -77,7 +66,6 @@ namespace Tests
             }
 
             return false;
-
         }
 
         /// <summary>
@@ -87,6 +75,21 @@ namespace Tests
         {
             Driver.FindElement(By.ClassName("cc-dismiss")).Click();
             Driver.FindElement(By.ClassName("close-dialog")).Click();
+        }
+
+        /// <summary>
+        /// Remove the invisible overlay from the page
+        /// </summary>
+        public void ClearOverlay()
+        {
+            try
+            {
+                Driver.ExecuteJavaScript("return document.getElementsByClassName('cdk-overlay-transparent-backdrop')[0].remove();");
+            }
+            catch
+            {
+                //If we can't find the overlay then just move on
+            }
         }
 
         /// <summary>
@@ -101,9 +104,11 @@ namespace Tests
             Driver.Navigate().GoToUrl($"{JuiceShopUrl}{path}");
         }
 
+        /// <summary>
+        /// Clean up after ourselves
+        /// </summary>
         public void Dispose()
         {
-            //Clean up after ourselves
             Driver.Dispose();
         }
     }

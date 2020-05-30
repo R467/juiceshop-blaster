@@ -1,8 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 
 namespace Tests
 {
@@ -29,7 +26,7 @@ namespace Tests
             RepeatPassword = Driver.FindElement(By.Id("repeatPasswordControl"));            
             SecurityAnswer = Driver.FindElement(By.Id("securityAnswerControl"));
             RegisterButton = Driver.FindElement(By.Id("registerButton"));
-            SecurityQuestion = Driver.FindElement(By.ClassName("mat-select-arrow"));            
+            SecurityQuestion = Driver.FindElement(By.ClassName("mat-select-arrow"));
         }
 
         public void EnterUserName(string username)
@@ -57,7 +54,10 @@ namespace Tests
             SecurityQuestion.Click();
 
             //This can't be selected until after the security question dropdown is clicked
-            SecurityDropDownItem = Driver.FindElement(By.Id("repeatPasswordControl"));
+            SecurityDropDownItem = Driver.FindElement(By.Id("mat-option-0"));
+
+            //Clear the invisible overlay so we can click the items beneath it
+            ClearOverlay();
 
             SecurityDropDownItem.Click();
         }

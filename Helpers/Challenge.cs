@@ -6,7 +6,9 @@ namespace Tests
         ErrorHandlingChallenge = 21,
         RedirectCryptoCurrencyChallenge = 54,
         PrivacyPolicyChallenge = 58,
+        ScoreBoardChallenge = 70,
         MissingEncodingChallenge = 89,
+        
 
         accessLogDisclosureChallenge = 2,
         registerAdminChallenge = 3,
@@ -61,8 +63,7 @@ namespace Tests
         resetPasswordJimChallenge = 65,
         resetPasswordMortyChallenge = 66,
         retrieveBlueprintChallenge = 67,
-        ssrfChallenge = 68,
-        scoreBoardChallenge = 70,
+        ssrfChallenge = 68,        
         securityPolicyChallenge = 71,
         hiddenImageChallenge = 73,
         supplyChainAttackChallenge = 75,

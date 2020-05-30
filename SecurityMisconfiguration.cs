@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+
 namespace Tests
 {
     class SecurityMisconfiguration : BaseTest

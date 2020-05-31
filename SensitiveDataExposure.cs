@@ -12,7 +12,7 @@ namespace Tests
         {
             JuiceShop.GoTo("/ftp/acquisitions.md");
             
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.DirectoryListingChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.DirectoryListingChallenge));
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Tests
         {
             JuiceShop.GoTo("/metrics");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ExposedMetricsChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.ExposedMetricsChallenge));
         }
     }
 }

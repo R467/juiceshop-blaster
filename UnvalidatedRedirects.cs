@@ -12,7 +12,7 @@ namespace Tests
         {
             JuiceShop.GoTo("/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.RedirectCryptoCurrencyChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.RedirectCryptoCurrencyChallenge));
         }
     }
 }

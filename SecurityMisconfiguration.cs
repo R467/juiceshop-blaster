@@ -12,7 +12,7 @@ namespace Tests
         {
             JuiceShop.GoTo("/rest/qwertz");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ErrorHandlingChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.ErrorHandlingChallenge));
         }
     }
 }

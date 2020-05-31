@@ -12,7 +12,7 @@ namespace Tests
         {
             JuiceShop.GoTo("#/privacy-security/privacy-policy");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.PrivacyPolicyChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.PrivacyPolicyChallenge));
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Tests
         {
             JuiceShop.GoTo("#/score-board");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ScoreBoardChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.ScoreBoardChallenge));
         }
     }
 }

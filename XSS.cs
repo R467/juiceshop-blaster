@@ -8,12 +8,14 @@ namespace Tests
         /// Perform a DOM XSS attack
         /// </summary>
         [Test]
+        [Ignore("This will perform the XSS attack but the result won't be recorded")]
         public void DomXss()
         {
-            JuiceShop.GoTo("/");
-            JuiceShop.Search("<iframe src='javascript: alert(`xss`)'>");
+            JuiceShop.GoTo("/#/search");
+            
+            JuiceShop.Search("<iframe src=\"javascript: alert(`xss`)\">");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.LocalXssChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.LocalXssChallenge));
         }
     }
 }

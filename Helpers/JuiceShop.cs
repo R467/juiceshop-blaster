@@ -4,24 +4,17 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading;
 
 namespace Tests
 {
     public class JuiceShop : IDisposable
     {
         //Where Juice Shop is running
-        public static string JuiceShopUrl { get; private set; }
+        public string JuiceShopUrl { get; private set; }
         //Chrome web driver
-        public static IWebDriver Driver { get; private set; }
+        public IWebDriver Driver { get; private set; }
         //appsettings.json
         public IConfiguration Config { get; private set; }
-        //Http client used to check score
-        private static readonly HttpClient Client = new HttpClient();
 
         public JuiceShop()
         {
@@ -44,36 +37,9 @@ namespace Tests
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);            
         }
 
-        /// <summary>
-        /// Checks to see if a challenge has been successfully complete
-        /// </summary>
-        /// <param name="challenge">The challenge to check</param>
-        /// <returns>Whether the challenge has been successful</returns>
-        public static bool IsChallengeSolved(Challenge challenge)
-        {
-            //Try up to 10 times to get the updated status of the challenge
-            //If it hasn't returned by then assume it failed
-            int attempts = 0;
-            while (attempts < 10)
-            {
-                //Look up challenge by id
-                var response = Client.GetStringAsync($"{JuiceShopUrl}/api/Challenges/?id={(int)challenge}").Result;
-
-                //Parse response from json to JsonChallengeResponse
-                JsonChallengeResponse result = JsonSerializer.Deserialize<JsonChallengeResponse>(response);
-
-                //Searching by id so assume the first result is the one we want
-                if (result.Data.First().Solved == true) return true;
-
-                Thread.Sleep(500);
-                attempts++;                
-            }
-
-            return false;
-        }
-
         public void Search(string query)
         {
+            ClearModals();
             ClearOverlay();
             Driver.FindElement(By.ClassName("mat-search_icon-search")).Click();
             Driver.FindElement(By.Id("mat-input-0")).SendKeys(query);
@@ -108,7 +74,7 @@ namespace Tests
         /// Navigate to a page
         /// </summary>
         /// <param name="path">Relative path</param>
-        public static void GoTo(string path)
+        public void GoTo(string path)
         {
             //Prepend a slash if it's not already there
             if (path[0] != '/') path = '/' + path;

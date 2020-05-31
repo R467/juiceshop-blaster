@@ -12,7 +12,7 @@ namespace Tests
         {
             JuiceShop.GoTo("/assets/public/images/uploads/😼-%23zatschi-%23whoneedsfourlegs-1572600969477.jpg");
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.MissingEncodingChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.MissingEncodingChallenge));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Tests
 
             RegisterPage.Register();
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.PasswordRepeatChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.PasswordRepeatChallenge));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Tests
             ContactPage.SolveCaptcha();
             ContactPage.Submit();
 
-            Assert.IsTrue(JuiceShop.IsChallengeSolved(Challenge.ZeroStarsChallenge));
+            Assert.IsTrue(IsChallengeSolved(Challenge.ZeroStarsChallenge));
         }
     }
 }
